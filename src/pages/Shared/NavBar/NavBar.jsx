@@ -31,7 +31,7 @@ const NavBar = () => {
       </li>
       <li>
         <Link to="/" className="uppercase">
-          cart  
+          cart
         </Link>
       </li>
       <li>
@@ -47,7 +47,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar fixed z-10 max-w-screen-lg bg-opacity-50 text-white bg-base-300">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -73,7 +73,9 @@ const NavBar = () => {
             {navLink}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <a className="btn btn-ghost  hover:bg-transparent text-xl uppercase">
+          Bd Restaurant
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLink}</ul>

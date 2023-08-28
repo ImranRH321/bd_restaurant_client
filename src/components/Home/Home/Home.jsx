@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
+import TopBannerSlider from "../TopBannerSlider/TopBannerSlider";
+import CategoryFoodName from "../CategoryFoodName/CategoryFoodName";
 
 const Home = () => {
-    return (
-        <div>
-            <h1>I am page </h1>
-        </div>
-    );
+  return (
+    <div>
+      <TopBannerSlider></TopBannerSlider>
+       <CategoryFoodName></CategoryFoodName>
+    </div>
+  );
 };
 
 export default Home;
