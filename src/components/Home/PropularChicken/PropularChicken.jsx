@@ -1,5 +1,6 @@
 import React from 'react';
 import useFoodItemsMenu from '../../../hooks/useFoodItemsMenu';
+import { Link } from 'react-router-dom';
 
 const PropularChicken = () => {
     const { foodMenus, loading } = useFoodItemsMenu()
@@ -31,12 +32,14 @@ const PropularChicken = () => {
                                 <p>{recipe.slice(0, 83)}</p>
                             </div>
                         </div>
-                    }) 
+                    })
                 }
             </div>
             {/* Popular chicken button naviage /our menu page  */}
             <div className="flex justify-center">
-                <button className='btn  bg-black text-white hover:bg-blue-700   border-none border-b-3  mt-4'>Full Menu</button>
+                <Link to="/ourMenuPage">
+                    <button className='btn  bg-black text-white hover:bg-blue-700   border-none border-b-3  mt-4'>Full Menu</button>
+                </Link>
             </div>
         </div>
     );

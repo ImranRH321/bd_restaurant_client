@@ -34,7 +34,10 @@ const OurShop = () => {
 
             {/*  */}
             <div className="my-5 text-center border">
-                <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+                <Tabs 
+                // defaultIndex={tabIndex}
+                selectedIndex={tabIndex}
+                 onSelect={(index) => setTabIndex(index)}>
                     <TabList>
                         <Tab>pizza</Tab>
                         <Tab>salad</Tab>
