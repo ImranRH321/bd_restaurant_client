@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useFoodItemsMenu from '../../hooks/useFoodItemsMenu';
@@ -15,18 +15,26 @@ const OurShop = () => {
     const iccCream = foodMenus.filter(food => food.category === "iccCream");
     const chicken = foodMenus.filter(food => food.category === "chicken");
 
-    const { categoryName: foodName } = useParams();
+    const { foodName } = useParams();
     //  console.log('categorItem-->',categorItem);  
+
+    const itemsFood = ["pizza", "salad", "iccCream", "chicken"];
+    const indexOfItem = itemsFood.indexOf(foodName);
+    const [tabIndex, setTabIndex] = useState(indexOfItem);
 
 
     return (
         <div className='pt-16'>
-            <h1 className='text-5xl'>{foodName} ---- Add Background image || just baken now </h1>
+            <h4>category name: {foodName} </h4>
+            <h4>tabIndex: {tabIndex} </h4>
+            <h4>indexOfItem: {indexOfItem} </h4>
+
+            <h1 className='text-2xl'>---- Add Background image || just baken now </h1>
             <h1 className='text-5xl'>Our Shop || Order page </h1>
 
             {/*  */}
             <div className="my-5 text-center border">
-                <Tabs>
+                <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                     <TabList>
                         <Tab>pizza</Tab>
                         <Tab>salad</Tab>
@@ -36,18 +44,22 @@ const OurShop = () => {
 
                     <TabPanel>
                         <h2>Any content 1</h2>
+                        <p className="text-2xl text-red-300">{tabIndex}</p>
                         <OrderTab items={pizza}></OrderTab>
                     </TabPanel>
                     <TabPanel>
                         <h2>Any content 2</h2>
+                        <p className="text-2xl text-red-300">{tabIndex}</p>
                         <OrderTab items={salad}></OrderTab>
                     </TabPanel>
                     <TabPanel>
                         <h2>Any content 3</h2>
+                        <p className="text-2xl text-red-300">{tabIndex}</p>
                         <OrderTab items={iccCream}></OrderTab>
                     </TabPanel>
                     <TabPanel>
                         <h2>Any content 4</h2>
+                        <p className="text-2xl text-red-300">{tabIndex}</p>
                         <OrderTab items={chicken}></OrderTab>
                     </TabPanel>
                 </Tabs>
