@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/TreeContextProvider";
+import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
   const { currentUser, logOutUser } = useContext(AuthContext)
@@ -9,6 +10,11 @@ const NavBar = () => {
       .then(() => { console.log('user log out done') })
       .catch(err => console.log('logout err', err))
   }
+  // carts 
+  const {carts} = useCart();
+
+
+  console.log('nv navbar carts:  ', carts);
   const navLink = (
     <>
       <li>
@@ -38,7 +44,7 @@ const NavBar = () => {
       </li>
       <li>
         <Link to="/" className="uppercase">
-          cart
+          cart {carts.length} me
         </Link>
       </li>
       <li>

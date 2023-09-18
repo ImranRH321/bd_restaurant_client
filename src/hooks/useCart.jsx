@@ -1,25 +1,30 @@
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/TreeContextProvider';
+import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
 
 const useCart = () => {
-    const userName = 'jhon'
+    const { currentUser } = useContext(AuthContext)
 
+    console.log('============================');
+    console.log(currentUser);
+    console.log('============================');
 
-    const { isLoading, error, data } = useQuery({
-        queryKey: ['/cart/getItem'],
+    const { refetch, data:carts=[], error } = useQuery({
+        queryKey: ['carts', currentUser?.email],
         queryFn: async () => {
-            const res = await fetch('https://api.github.com/repos/TanStack/query')
-            const data = res.json()
-          console.log(data ,'cart data');
-        }
+            // mistik: 5173--->50000
+            // const res = await axios.get(`http://localhost:5173/rcarts?email=${currentUser.email}`)
+            const res = await axios.get(`http://localhost:5000/carts?email=${currentUser.email}`)
+            console.log('res axios carts: ', res);
+            return res.data;
+        },
     })
 
 
-    return (
-        <div>
+    console.log('carts data', carts.length);
 
-        </div>
-    );
+    return {carts,refetch}
 };
 
 export default useCart;

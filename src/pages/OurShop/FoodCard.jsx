@@ -1,14 +1,22 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import { AuthContext } from '../../context/TreeContextProvider';
+import useCart from '../../hooks/useCart';
 
 const FoodCard = ({ itemsFood }) => {
     const { name, image, recipe, category, _id, price
     } = itemsFood;
 
-    const user = false;
+
+    const { currentUser } = useContext(AuthContext)
+    /* not  codion apply */
     const navigate = useNavigate();
+    const { refetch } = useCart()
+
+    // console.log("currentUser:", currentUser);
+
 
     // ADD data 
     const hanldeAddToCart = item => {
@@ -23,15 +31,17 @@ const FoodCard = ({ itemsFood }) => {
             confirmButtonText: 'Add the card'
         }).then((result) => {
             if (result.isConfirmed) {
-                const orderInfo = { category, price, nameUser: user?.displayName || 'anonimus user', userEmail: user?.email || "anonimuse email", name, foodItemId: item._id, }
-                if (user) {
-                    console.log(orderInfo);
-                    alert("user ase")
-                    axios.post('http://localhost:5000/cart/addItem', orderInfo)
+                const userOrderInfo = { foodname: name, category, price, nameUser: currentUser?.displayName || 'current user name null', emailUser: currentUser?.email || "current email null", foodItemId: item._id, }
+                if (currentUser) {
+                    console.log(currentUser, ' i am current user bro');
+
+                    console.log("userOrderInfo:", userOrderInfo);
+                    // alert("user ase")
+                    axios.post('http://localhost:5000/cart/addItem', userOrderInfo)
                         .then(res => {
                             console.log('res data ', res.data)
                             if (res.data.insertedId) {
-                                alert('oke done')
+                                // alert('oke done') 
                                 Swal.fire({
                                     position: 'top-end',
                                     icon: 'success',
@@ -39,6 +49,7 @@ const FoodCard = ({ itemsFood }) => {
                                     showConfirmButton: false,
                                     timer: 1500
                                 })
+                                refetch()
                             }
                         })
                         .catch(err => console.log(err))
@@ -46,7 +57,7 @@ const FoodCard = ({ itemsFood }) => {
 
 
                 } else {
-                    alert('no user ')
+                    // alert('no user ') 
                     navigate("/login")
                 }
                 /*  Swal.fire(
