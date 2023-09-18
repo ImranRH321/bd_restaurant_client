@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../context/TreeContextProvider";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Register = () => {
       const { registerUser, updateProfileUser} = useContext(AuthContext);
@@ -34,35 +35,6 @@ const Register = () => {
                     console.log('Profile updated!')
                 })
                 .catch((err) => setError(err));
-                
-            // -------- 
-            //           updateProfileUser(data.name, data.photoUrl).then(() => {
-            //             // update now
-
-            //             const saveNewUser = {
-            //               name: data.name,
-            //               email: data.email,
-            //               password: data.password,
-            //               photoUrl: data.photoUrl,
-            //               userRole: "user",
-            //             };
-            //             console.log(saveNewUser, "saveNewUser");
-
-            //             //
-            //             fetch("http://localhost:5000/users ", {
-            //               method: "POST",
-            //               headers: { "content-type": "application/json" },
-            //               body: JSON.stringify(saveNewUser),
-            //             })
-            //               .then((res) => res.json())
-            //               .then((data) => {
-            //                 reset();
-            //                 Swal.fire("user Register successfully");
-            //                 navigate("/");
-            //               });
-            // // 
-            //           });
-            // --- 
             })
             .catch((err) => setError(err)); 
         }
@@ -82,7 +54,7 @@ const Register = () => {
                         </p>
                     </div>
                     <div className="card flex-shrink-0 w-full me-16 max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-3">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -176,7 +148,7 @@ const Register = () => {
                                 <input type="submit" value="SingUp" className="btn btn-info" />
                             </div>
                         </form>
-                        <p className="mb-6  font-semibold mx-auto">
+                        <p className=" font-semibold mx-auto">
                             Already registered?{" "}
                             <Link to="/login" className="link ms-2 ">
                                  please  login
@@ -184,7 +156,7 @@ const Register = () => {
                         </p>
 
                         {/* socialLogin */}
-                        {/* <SocialLogin></SocialLogin>  */}
+                        <SocialLogin setError={setError}></SocialLogin>
                     </div>
                 </div> 
             </div>

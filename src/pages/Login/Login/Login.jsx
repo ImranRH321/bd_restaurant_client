@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/TreeContextProvider";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
     const {loginUser } = useContext(AuthContext);
@@ -92,7 +93,7 @@ const Login = () => {
                         </Link>
                     </p>
                     {/* SocialLogin */}
-                    {/* <SocialLogin></SocialLogin>  */}
+                    <SocialLogin setError={setError}></SocialLogin>
                 </div>
             </section>
         </div>
