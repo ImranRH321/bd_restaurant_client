@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/TreeContextProvider";
 
 const Login = () => {
-    // const { loginUser } = useContext(AuthContext);
+    const {loginUser } = useContext(AuthContext);
 
     //
     let navigate = useNavigate();
@@ -18,13 +19,15 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
-        // loginUser(email, password)
-        //     .then((userCredential) => {
-        //         const loggedUser = userCredential.user;
-        //         Swal.fire("user login successfully");
-        //         navigate(from, { replace: true });
-        //     })
-        //     .catch((err) => setError(err.message));
+        loginUser(email, password)
+            .then((userCredential) => {
+                const loggedUser = userCredential.user;
+                console.log("loggedUser-->",loggedUser)
+                Swal.fire("user login successfully");
+                // navigate(from, { replace: true }); 
+                navigate('/')
+            })
+            .catch((err) => setError(err));
     };
 
     return (
@@ -32,8 +35,7 @@ const Login = () => {
             {/* TODO: Helmat not install   */}
 
             <br />
-
-            {/* <section className="grid md:grid-cols-2 mb-5"> */}
+             {/* <section className="grid md:grid-cols-2 mb-5"> */}
             <section className="flex justify-center items-center">
                 {/* <div className="imgParent">
                     <img
@@ -73,7 +75,7 @@ const Login = () => {
                         </div>
 
                         {/* TODO: Firebase error */}
-                        <p className="text-red-500">{error}</p>
+                        <p className="text-red-500">{error?.message}</p>
                         <div className="form-control mt-2">
                             {/* TODO: disabled captcha  button after last change disabled */}
                             <input

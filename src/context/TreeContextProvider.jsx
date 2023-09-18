@@ -1,0 +1,57 @@
+import React, { createContext, useEffect, useState } from 'react';
+import app from '../firebase/firebase.config';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+
+
+const auth = getAuth(app)
+export const AuthContext = createContext(null);
+
+
+const TreeContextProvider = ({ children }) => {
+    const user = true;
+    const [currentUser, setCurrentUser] = useState(null);
+
+    // firebase cental 
+    const registerUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+    const loginUser = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+    // signOut 
+    const logOutUser = () => {
+        return signOut(auth)
+    }
+
+    // updateProfile
+    const updateProfileUser = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+        })
+    }
+
+
+
+
+
+
+    useEffect(() => {
+        const unSubscript = onAuthStateChanged(auth, (user) => {
+            setCurrentUser(user)
+        })
+        return unSubscript;
+    }, [])
+
+    const authInfoUser = {
+        user,
+        currentUser,
+        registerUser,
+        loginUser,
+        logOutUser,
+        updateProfileUser
+    }
+    return <AuthContext.Provider value={authInfoUser}>{children}</AuthContext.Provider>
+
+};
+
+export default TreeContextProvider;

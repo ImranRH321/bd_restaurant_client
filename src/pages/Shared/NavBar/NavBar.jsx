@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/TreeContextProvider";
 
 const NavBar = () => {
+  const { currentUser, logOutUser } = useContext(AuthContext)
+  const handleLogOut = () => {
+    logOutUser()
+      .then(() => { console.log('user log out done') })
+      .catch(err => console.log('logout err', err))
+  }
   const navLink = (
     <>
       <li>
@@ -35,8 +42,10 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/" className="uppercase">
-          sing out
+        <Link className="uppercase">
+          <button onClick={handleLogOut} className="btn btn-sm btn-danger">
+            sing out
+          </button>
         </Link>
       </li>
       <li>
@@ -47,7 +56,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar fixed z-10 max-w-screen-lg  bg:kopacity-25 text-black bg-black-300">
+    <div className="navbar fixed z-10 max-w-screen-lg  bg-warning text-black bg-black-300">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -73,9 +82,18 @@ const NavBar = () => {
             {navLink}
           </ul>
         </div>
-        <a className="btn btn-ghost  hover:bg-transparent text-xl uppercase">
+        {/* <a className="btn btn-ghost  hover:bg-transparent text-xl uppercase">
           Bd Restaurant
-        </a>
+          <span>{currentUser.email}</span>
+        </a> */}
+        <div className="logo">
+          <a className="btn btn-ghost   hover:bg-transparent text-xl uppercase">
+            {/* Bd Restaurant  */}
+            {currentUser?.displayName || 'not updated name'}
+            <span className="pb-3 text-sm"> {currentUser?.email}</span>
+          </a>
+
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLink}</ul>
