@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/TreeContextProvider";
 import useCart from "../../../hooks/useCart";
+import { FaShoppingCart } from 'react-icons/fa';
 
 const NavBar = () => {
   const { currentUser, logOutUser } = useContext(AuthContext)
@@ -11,8 +12,9 @@ const NavBar = () => {
       .catch(err => console.log('logout err', err))
   }
   // carts 
-  const {carts} = useCart();
+  const { carts } = useCart();
 
+  console.log(currentUser, ' user me');
 
   console.log('nv navbar carts:  ', carts);
   const navLink = (
@@ -43,16 +45,25 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/" className="uppercase">
-          cart {carts.length} me
+        <Link className="hover:text-warning" to="/dashboard/mycart">
+          <div className="btn btn-ghost btn-circle">
+            <FaShoppingCart></FaShoppingCart>
+            <span className="badge badge-sm indicator-item">
+              {carts.length || 0}
+            </span>
+          </div>
         </Link>
       </li>
       <li>
-        <Link className="uppercase">
-          <button onClick={handleLogOut} className="btn btn-sm btn-danger">
-            sing out
+        {currentUser ? <>  <button onClick={handleLogOut} className="btn uppercase btn-sm text-white bg-red-500 hover:bg-red-500">
+          sing out
+        </button></> : <>  <Link to="/login">
+          <button className="btn btn-sm btn-priamry">
+            Login
           </button>
-        </Link>
+        </Link></>}
+
+
       </li>
       <li>
         <Link to="/" className="uppercase">
@@ -98,12 +109,13 @@ const NavBar = () => {
             {currentUser?.displayName || 'not updated name'}
             <span className="pb-3 text-sm"> {currentUser?.email}</span>
           </a>
-
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLink}</ul>
+
       </div>
+
     </div>
   );
 };

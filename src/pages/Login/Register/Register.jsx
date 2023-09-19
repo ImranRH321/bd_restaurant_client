@@ -4,9 +4,10 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../../context/TreeContextProvider";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import axios from "axios";
 
 const Register = () => {
-      const { registerUser, updateProfileUser} = useContext(AuthContext);
+    const { registerUser, updateProfileUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
@@ -19,24 +20,39 @@ const Register = () => {
     } = useForm();
 
     // firebase show error
-    console.log(error,'firebase');
+    console.log(error, 'firebase');
 
     const onSubmit = (data) => {
         console.log(data, 'for data');
         {
-              registerUser(data.email, data.password)
+            registerUser(data.email, data.password)
                 .then((userCredential) => {
-                  const cratedUser = userCredential.user;
-                  console.log(cratedUser, "-->RegisterUser newUser");
-                  updateProfileUser(data.name, data.photo)
-                  .then( () => {
-                      // lot of code.......
-                       navigate('/') 
-                    console.log('Profile updated!')
+                    const cratedUser = userCredential.user;
+                    console.log(cratedUser, "-->RegisterUser newUser");
+                    updateProfileUser(data.name, data.photo)
+                        .then(() => {
+                            // lot of code.......
+                            const userLogInfo = { nameUser: data.name, emailuser: data.email, photo: data.photo }
+                             console.log(userLogInfo,'log info data');
+                             axios.post('http://localhost:5000/users', userLogInfo)
+                             .then(res => {
+                                console.log(res,'res axios');
+                                if(res.data.insertedId){
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Your work has been saved',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    navigate('/')
+                                }
+                             })
+                            console.log('Profile updated!')
+                        })
+                        .catch((err) => setError(err));
                 })
                 .catch((err) => setError(err));
-            })
-            .catch((err) => setError(err)); 
         }
     };
 
@@ -151,14 +167,14 @@ const Register = () => {
                         <p className=" font-semibold mx-auto">
                             Already registered?{" "}
                             <Link to="/login" className="link ms-2 ">
-                                 please  login
+                                please  login
                             </Link>
                         </p>
 
                         {/* socialLogin */}
                         <SocialLogin setError={setError}></SocialLogin>
                     </div>
-                </div> 
+                </div>
             </div>
         </>
     );
