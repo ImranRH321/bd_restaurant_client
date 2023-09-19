@@ -30,7 +30,7 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/" className="uppercase">
+        <Link to="/dashboard" className="uppercase">
           dashboard
         </Link>
       </li>
@@ -45,13 +45,13 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link className="hover:text-warning" to="/dashboard/mycart">
+        <Link  to="/dashboard/myCart"  className="hover:text-warning">
           <div className="btn btn-ghost btn-circle">
             <FaShoppingCart></FaShoppingCart>
             <span className="badge badge-sm indicator-item">
               {carts.length || 0}
             </span>
-          </div>
+          </div> 
         </Link>
       </li>
       <li>

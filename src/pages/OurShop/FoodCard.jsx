@@ -31,7 +31,7 @@ const FoodCard = ({ itemsFood }) => {
             confirmButtonText: 'Add the card'
         }).then((result) => {
             if (result.isConfirmed) {
-                const userOrderInfo = { foodname: name, category, price, nameUser: currentUser?.displayName || 'current user name null', emailUser: currentUser?.email || "current email null", foodItemId: item._id, }
+                const userOrderInfo = { foodname: name, category, price, nameUser: currentUser?.displayName || 'current user name null', emailUser: currentUser?.email || "current email null", foodItemId: item._id, image: image }
                 if (currentUser) {
                     console.log(currentUser, ' i am current user bro');
 
@@ -50,6 +50,13 @@ const FoodCard = ({ itemsFood }) => {
                                     timer: 1500
                                 })
                                 refetch()
+                            } else if (res.data.message) {
+                                console.log('res.data exist ', res.data);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'food items all ready exist',
+                                })
                             }
                         })
                         .catch(err => console.log(err))
