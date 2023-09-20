@@ -10,26 +10,27 @@ export const AuthContext = createContext(null);
 
 const TreeContextProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
+    const [authLoading, setAuthLoading] = useState(true);//false not work
     const provider = new GoogleAuthProvider();
-    const [loading, setLoading] = useState(false);
 
     // firebase cental 
     const registerUser = (email, password) => {
-        setLoading(true)
+        setAuthLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const loginUser = (email, password) => {
-        setLoading(true)
+        setAuthLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     // signOut 
     const logOutUser = () => {
+        setAuthLoading(true)
         return signOut(auth)
     }
 
     // updateProfile
     const updateProfileUser = (name, photo) => {
-        setLoading(true)
+
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
@@ -38,31 +39,30 @@ const TreeContextProvider = ({ children }) => {
     // Social login 
     // googleUser
     const googleUser = () => {
-        setLoading(true)
+        setAuthLoading(true)
         return signInWithPopup(auth, provider)
     }
 
     // 
     useEffect(() => {
         const unSubscript = onAuthStateChanged(auth, (user) => {
+            setCurrentUser(user)
             if (user && user.email) {
-
-                setCurrentUser(user)
-                setLoading(false)
                 const email = { emailUser: user.email };
                 axios.post('http://localhost:5000/user/tokenSet', email)
-                    .then(res => {
-                        localStorage.setItem('userAccessToken', res.data.token)
-
+                .then(res => {
+                    localStorage.setItem('userAccessToken', res.data.token)
+                    setAuthLoading(false)
                     })
             } else {
                 console.log('user nai: ', currentUser);
                 localStorage.removeItem('userAccessToken')
+
             }
         })
         return unSubscript;
     }, [])
- //  
+    //  
 
     const authInfoUser = {
         currentUser,
@@ -71,7 +71,7 @@ const TreeContextProvider = ({ children }) => {
         logOutUser,
         updateProfileUser,
         googleUser,
-        loading
+        authLoading
 
     }
     return <AuthContext.Provider value={authInfoUser}>{children}</AuthContext.Provider>

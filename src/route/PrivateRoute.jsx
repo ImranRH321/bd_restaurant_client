@@ -1,17 +1,15 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/TreeContextProvider';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import CustomLoading from '../pages/Shared/CustomLoading/CustomLoading';
 
 const PrivateRoute = ({ children }) => {
-    const { currentUser, loading } = useContext(AuthContext)
+    const { currentUser, authLoading } = useContext(AuthContext)
 
-    const navigate = useNavigate();
     const location = useLocation();
-    console.log('location state : ', location);
 
-    if (loading) {
-        console.log('loading',loading);
-        return <h1>Auth Loading .....</h1>
+    if (authLoading) {
+        return <CustomLoading></CustomLoading>
     }
 
     if (currentUser) {

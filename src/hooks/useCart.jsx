@@ -6,19 +6,22 @@ import { useQuery } from '@tanstack/react-query';
 const useCart = () => {
     const { currentUser } = useContext(AuthContext)
 
+    const getToken = localStorage.getItem('userAccessToken');
+    // console.log(getToken,'getToken me');
+    // console.log(currentUser,'currentUser me');
 
-    const { refetch, data:carts=[], error } = useQuery({
+    const { refetch, data: carts = [], error } = useQuery({
         queryKey: ['carts', currentUser?.email],
         queryFn: async () => {
-            // mistik: 5173--->50000
-            // const res = await axios.get(`http://localhost:5173/rcarts?email=${currentUser.email}`)
-            const res = await axios.get(`http://localhost:5000/carts?email=${currentUser.email}`)
-            // console.log('res axios carts: ', res);
+            const res = await axios.get(`http://localhost:5000/carts?email=${currentUser.email}`, {
+                headers: { authorizatoin: `Bearer ${getToken}` }
+            })
+            console.log('cart get  res me: ',res);
             return res.data;
         },
     })
 
-    return {carts,refetch}
+    return { carts, refetch }
 };
 
 export default useCart;
