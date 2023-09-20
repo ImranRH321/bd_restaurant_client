@@ -14,9 +14,7 @@ const NavBar = () => {
   // carts 
   const { carts } = useCart();
 
-  console.log(currentUser, ' user me');
 
-  console.log('nv navbar carts:  ', carts);
   const navLink = (
     <>
       <li>

@@ -32,7 +32,7 @@ const Register = () => {
                     updateProfileUser(data.name, data.photo)
                         .then(() => {
                             // lot of code.......
-                            const userLogInfo = { nameUser: data.name, emailuser: data.email, photo: data.photo }
+                            const userLogInfo = { nameUser: data.name, emailUser: data.email, photo: data.photo }
                              console.log(userLogInfo,'log info data');
                              axios.post('http://localhost:5000/users', userLogInfo)
                              .then(res => {

@@ -21,59 +21,57 @@ const FoodCard = ({ itemsFood }) => {
     // ADD data 
     const hanldeAddToCart = item => {
         //    console.log(item);
-        Swal.fire({
-            title: `add the card ${item.name}`,
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Add the card'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const userOrderInfo = { foodname: name, category, price, nameUser: currentUser?.displayName || 'current user name null', emailUser: currentUser?.email || "current email null", foodItemId: item._id, image: image }
-                if (currentUser) {
-                    console.log(currentUser, ' i am current user bro');
 
-                    console.log("userOrderInfo:", userOrderInfo);
-                    // alert("user ase")
-                    axios.post('http://localhost:5000/cart/addItem', userOrderInfo)
-                        .then(res => {
-                            console.log('res data ', res.data)
-                            if (res.data.insertedId) {
-                                // alert('oke done') 
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Your work has been saved',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                                refetch()
-                            } else if (res.data.message) {
-                                console.log('res.data exist ', res.data);
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: 'food items all ready exist',
-                                })
-                            }
+        if (currentUser) {
+
+            const userOrderInfo = { foodname: name, category, price, nameUser: currentUser?.displayName || 'current user name null', emailUser: currentUser?.email || "current email null", foodItemId: item._id, image: image }
+            // alert("user ase")
+            axios.post('http://localhost:5000/cart/addItem', userOrderInfo)
+                .then(res => {
+                    console.log('res data ', res.data)
+                    if (res.data.insertedId) {
+                        // alert('oke done') 
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
                         })
-                        .catch(err => console.log(err))
+                        refetch()
+                    } else if (res.data.message) {
+                        console.log('res.data exist ', res.data);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'food items all ready exist',
+                        })
+                    }
+                })
+                .catch(err => console.log(err))
 
 
+        } else {
+            // console.log('current user nai via');
+            // // is line not working why ... 
+            // navigate('/login', { state: { from: 'location' }, replace: true });
 
-                } else {
-                    // alert('no user ') 
-                    navigate("/login")
+            Swal.fire({
+                title: 'Are you not user please login ?',
+                text: "taray taray otiye dilam ",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'login'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: true } })
                 }
-                /*  Swal.fire(
-                   'Deleted!',
-                   'Your file has been deleted.',
-                   'success'
-                 ) */
-            }
-        })
+            })
+        }
+        // 
+
     }
 
     return (

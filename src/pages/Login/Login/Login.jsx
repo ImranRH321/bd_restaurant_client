@@ -5,12 +5,13 @@ import { AuthContext } from "../../../context/TreeContextProvider";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
-    const {loginUser } = useContext(AuthContext);
+    const { loginUser } = useContext(AuthContext);
 
     //
     let navigate = useNavigate();
-    // let location = useLocation();
-    // let from = location.state?.from?.pathname || "/";
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    console.log('from via tumi kota take aico-->', from);
     // err
     const [error, setError] = useState("");
 
@@ -23,10 +24,10 @@ const Login = () => {
         loginUser(email, password)
             .then((userCredential) => {
                 const loggedUser = userCredential.user;
-                console.log("loggedUser-->",loggedUser)
+                console.log("loggedUser-->", loggedUser)
                 Swal.fire("user login successfully");
                 // navigate(from, { replace: true }); 
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch((err) => setError(err));
     };
@@ -36,7 +37,7 @@ const Login = () => {
             {/* TODO: Helmat not install   */}
 
             <br />
-             {/* <section className="grid md:grid-cols-2 mb-5"> */}
+            {/* <section className="grid md:grid-cols-2 mb-5"> */}
             <section className="flex justify-center items-center">
                 {/* <div className="imgParent">
                     <img

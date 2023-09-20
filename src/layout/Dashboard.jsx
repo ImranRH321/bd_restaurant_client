@@ -5,7 +5,7 @@ import { FaBook, FaCalendar, FaHome, FaShoppingCart, FaUser, FaUtensils, FaWalle
 
 const Dashboard = () => { 
     const {carts} = useCart();
-    const isAdmin = !true;
+    const isAdmin = true;
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -48,7 +48,7 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/allusers">
+                                <NavLink to="/dashboard/allUsers">
                                     <FaUser></FaUser> all users
                                 </NavLink>
                             </li>

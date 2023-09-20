@@ -1,13 +1,19 @@
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../../context/TreeContextProvider';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
 const SocialLogin = ({ setError }) => {
     const { googleUser } = useContext(AuthContext)
-    const navigate = useNavigate();
+    //
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    console.log('location.state?.from?.pathname---->', location.state?.from?.pathname);
+    console.log('from via tumi kota take aico -->', from);
+
 
     const hanldeGoogeUser = () => {
         googleUser()
@@ -27,7 +33,7 @@ const SocialLogin = ({ setError }) => {
                                 showConfirmButton: false,
                                 timer: 1500
                             })
-                            navigate('/')
+                            navigate(from, { replace: true })
                         }
                     })
                 // 

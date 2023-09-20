@@ -16,7 +16,6 @@ const OurShop = () => {
     const chicken = foodMenus.filter(food => food.category === "chicken");
 
     const { foodName } = useParams();
-    //  console.log('categorItem-->',categorItem);  
 
     const itemsFood = ["pizza", "salad", "iccCream", "chicken"];
     const indexOfItem = itemsFood.indexOf(foodName);
