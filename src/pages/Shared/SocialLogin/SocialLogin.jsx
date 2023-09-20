@@ -21,10 +21,9 @@ const SocialLogin = ({ setError }) => {
                 const gooUser = result.user;
                 // console.log(gooUser) 
                 const userLogInfo = { nameUser: gooUser.displayName, emailuser: gooUser.email, photo: gooUser.photoURL }
-                console.log(userLogInfo, 'log info data');
+
                 axios.post('http://localhost:5000/users', userLogInfo)
                     .then(res => {
-                        console.log(res, 'res axios');
                         if (res.data) {
                             Swal.fire({
                                 position: 'top-end',
