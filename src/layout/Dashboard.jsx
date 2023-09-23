@@ -3,9 +3,22 @@ import useCart from '../hooks/useCart';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaBook, FaCalendar, FaHome, FaShoppingCart, FaUser, FaUtensils, FaWallet } from 'react-icons/fa';
 
-const Dashboard = () => { 
-    const {carts} = useCart();
-    const isAdmin = true;
+import useAuth from '../hooks/useAuth';
+import useAdmin from '../hooks/useAdmin';
+
+const Dashboard = () => {
+    const { carts } = useCart();
+    // const isAdmin = true;
+    const { logOutUser } = useAuth();
+
+    const { isAdmin } = useAdmin();
+    console.log(isAdmin);
+    // const isAdmin = false;
+
+    const hanldeLogOutButton = () => {
+        logOutUser();
+    }
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -23,6 +36,8 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu  p-4 w-80 h-full ">
                     {/* Sidebar content here */}
+                    <h1 className="text-3xl text-black">isAdmin heda miya{`--raja -->${new String(isAdmin)}`}</h1>
+                    <h4>-------------------------</h4>
                     {isAdmin ? (
                         <>
                             <li>
@@ -114,6 +129,9 @@ const Dashboard = () => {
                     </li>
                     <li>
                         <NavLink to="/contact">Contact</NavLink>
+                    </li>
+                    <li>
+                        <button onClick={hanldeLogOutButton} className='btn btn-error'>Contact</button>
                     </li>
                 </ul>
             </div>

@@ -50,13 +50,14 @@ const TreeContextProvider = ({ children }) => {
             if (user && user.email) {
                 const email = { emailUser: user.email };
                 axios.post('http://localhost:5000/user/tokenSet', email)
-                .then(res => {
-                    localStorage.setItem('userAccessToken', res.data.token)
-                    setAuthLoading(false)
+                    .then(res => {
+                        localStorage.setItem('userAccessToken', res.data.token)
+                        setAuthLoading(false)
                     })
             } else {
                 console.log('user nai: ', currentUser);
                 localStorage.removeItem('userAccessToken')
+                setAuthLoading(false)
 
             }
         })

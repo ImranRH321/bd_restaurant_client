@@ -5,7 +5,7 @@ import useCart from "../../../hooks/useCart";
 import { FaShoppingCart } from 'react-icons/fa';
 
 const NavBar = () => {
-  const { currentUser, logOutUser } = useContext(AuthContext)
+  const { currentUser, } = useContext(AuthContext)
   const handleLogOut = () => {
     logOutUser()
       .then(() => { console.log('user log out done') })

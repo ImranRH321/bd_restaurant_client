@@ -33,21 +33,22 @@ const Register = () => {
                         .then(() => {
                             // lot of code.......
                             const userLogInfo = { nameUser: data.name, emailUser: data.email, photo: data.photo }
-                             console.log(userLogInfo,'log info data');
-                             axios.post('http://localhost:5000/users', userLogInfo)
-                             .then(res => {
-                                console.log(res,'res axios');
-                                if(res.data.insertedId){
-                                    Swal.fire({
-                                        position: 'top-end',
-                                        icon: 'success',
-                                        title: 'Your work has been saved',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    })
-                                    navigate('/')
-                                }
-                             })
+                            console.log(userLogInfo, 'log info data');
+                            axios.post('http://localhost:5000/users', userLogInfo)
+                                .then(res => {
+                                    console.log(res, 'res axios');
+                                    if (res.data.insertedId) {
+                                        Swal.fire({
+                                            position: 'top-end',
+                                            icon: 'success',
+                                            title: 'Your work has been saved',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        })
+                                        navigate('/')
+                                        reset();
+                                    }
+                                })
                             console.log('Profile updated!')
                         })
                         .catch((err) => setError(err));

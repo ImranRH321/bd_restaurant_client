@@ -4,14 +4,21 @@ import { FaRegTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import axios from "axios";
 
+
+
 const AllUsers = () => {
+
+
     // Queries
     const { refetch, data: users = [] } = useQuery(["users"], async () => {
-        const res = await axios.get("http://localhost:5000/users");
+        const res = await axios.get("http://localhost:5000/users", {
+            headers: { authorization: `Bearer ${localStorage.getItem('userAccessToken')}` }
+        });
+        console.log('all user data >', res);
         return res.data;
     });
 
- /* Add admin new user role updated Admin role code  */
+    /* Add admin new user role updated Admin role code  */
     const handleMakeAdminUserRole = (user) => {
         axios.patch(`http://localhost:5000/users/roleSet/${user.emailUser}`, {
             method: 'PATCH',
@@ -26,6 +33,7 @@ const AllUsers = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    refetch()
                 }
             })
     };
@@ -47,9 +55,9 @@ const AllUsers = () => {
                 }
             })
     };
-    
+
     return (
-        <div className="w-full px-12">
+        <div className="w-full m-3 mx-auto text-lg">
             <h1>all user : {users?.length} </h1>
             <div className="overflow-x-auto">
                 <table className="table">
