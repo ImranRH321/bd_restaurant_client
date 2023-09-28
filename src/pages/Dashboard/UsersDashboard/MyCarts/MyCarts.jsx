@@ -38,7 +38,7 @@ const MyCarts = () => {
             <div className="flex gap-10 uppercase items-center">
                 <h1>Total Items: {carts?.length}</h1>
                 <h1>Total Price: ${sumTotalPrice}</h1>
-                <Link to="/">
+                <Link to="/dashboard/payment">
                     <button className="btn btn-warning btn-sm">Pay</button>
                 </Link>
             </div>
