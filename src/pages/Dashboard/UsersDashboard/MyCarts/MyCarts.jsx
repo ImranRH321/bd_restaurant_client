@@ -6,29 +6,29 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const MyCarts = () => {
-    const { carts,refetch } = useCart();
+    const { carts, refetch } = useCart();
 
     const sumTotalPrice = carts.reduce((sum, item) => sum + item.price, 0)
 
-    console.log(carts,'   my cart data');
+    console.log(carts, '   my cart data');
 
     // Deleted food on the cart 
     const handleDeletedFoodItem = (item) => {
-        console.log(item,'dele');
+        console.log(item, 'dele');
         axios.delete(`http://localhost:5000/carts/${item._id}`)
-        .then(res => {
-            console.log('cart deleted item axios res me: ',res);
-          if(res.data.deletedCount>0){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: `${item.foodname} Your item has been deleted`,
-                showConfirmButton: false,
-                timer: 1500
+            .then(res => {
+                console.log('cart deleted item axios res me: ', res);
+                if (res.data.deletedCount > 0) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${item.foodname} Your item has been deleted`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    refetch()
+                }
             })
-              refetch()
-          }
-        })
     }
 
     return (

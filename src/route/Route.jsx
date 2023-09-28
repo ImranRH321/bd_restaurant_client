@@ -13,6 +13,7 @@ import AdminRoute from "./AdminRoute";
 import AddItems from "../pages/Dashboard/AdminDashboard/AddItems/AddItems";
 import ManageItems from "../pages/Dashboard/AdminDashboard/ManageItems/ManageItems";
 import Payment from "../pages/Dashboard/UsersDashboard/Payment/Payment/Payment";
+import DansonCheckoutForm from "../pages/Dashboard/UsersDashboard/Payment/CheckoutForm/DansonCheckoutForm";
 
 
 export const router = createBrowserRouter([
@@ -36,7 +37,7 @@ export const router = createBrowserRouter([
       // Admin
       { path: "allUsers", element: <AdminRoute> <AllUsers></AllUsers> </AdminRoute> },
       { path: "addItem", element: <AdminRoute> <AddItems></AddItems> </AdminRoute> }
-      ,{ path: "manageItem", element: <AdminRoute> <ManageItems></ManageItems> </AdminRoute> }
+      , { path: "manageItem", element: <AdminRoute> <ManageItems></ManageItems> </AdminRoute> }
     ]
   }
 ]);
