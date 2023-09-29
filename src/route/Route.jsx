@@ -14,6 +14,8 @@ import AddItems from "../pages/Dashboard/AdminDashboard/AddItems/AddItems";
 import ManageItems from "../pages/Dashboard/AdminDashboard/ManageItems/ManageItems";
 import Payment from "../pages/Dashboard/UsersDashboard/Payment/Payment/Payment";
 import DansonCheckoutForm from "../pages/Dashboard/UsersDashboard/Payment/CheckoutForm/DansonCheckoutForm";
+import AdminHome from "../pages/Dashboard/AdminDashboard/AdminHome/AdminHome";
+import UserHome from "../pages/Dashboard/UsersDashboard/UserHome/UserHome";
 
 
 export const router = createBrowserRouter([
@@ -32,9 +34,12 @@ export const router = createBrowserRouter([
     path: '/dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
     , children: [
+      // user
+      { path: "userHome", element: <UserHome></UserHome> },
       { path: "myCart", element: <MyCarts></MyCarts> },
       { path: "payment", element: <Payment></Payment> },
       // Admin
+      { path: "adminHome", element: <AdminRoute> <AdminHome></AdminHome> </AdminRoute> },
       { path: "allUsers", element: <AdminRoute> <AllUsers></AllUsers> </AdminRoute> },
       { path: "addItem", element: <AdminRoute> <AddItems></AddItems> </AdminRoute> }
       , { path: "manageItem", element: <AdminRoute> <ManageItems></ManageItems> </AdminRoute> }

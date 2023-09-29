@@ -105,7 +105,7 @@ const DansonCheckoutForm = () => {
             }
             // send data
             console.log(paymentUser);
-            axios.post('http://localhost:5000/payments', paymentUser)
+            instanceSecoreApis.post('http://localhost:5000/payments', paymentUser)
                 .then(res => {
                     console.log('save data res', res.data)
                     if (res.data.insertedResult.insertedId) {

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/TreeContextProvider";
 import useCart from "../../../hooks/useCart";
 import { FaShoppingCart } from 'react-icons/fa';
+import useAdmin from "../../../hooks/useAdmin";
 
 const NavBar = () => {
   const { currentUser, } = useContext(AuthContext)
@@ -13,6 +14,9 @@ const NavBar = () => {
   }
   // carts 
   const { carts } = useCart();
+
+  const { isAdmin } = useAdmin();
+
 
 
   const navLink = (
@@ -27,11 +31,15 @@ const NavBar = () => {
           conect us
         </Link>
       </li>
-      <li>
-        <Link to="/dashboard" className="uppercase">
+      {isAdmin ? <li>
+        <Link to="/dashboard/adminHome" className="uppercase">
           dashboard
         </Link>
-      </li>
+      </li> : <li>
+        <Link to="/dashboard/userHome" className="uppercase">
+          dashboard
+        </Link>
+      </li>}
       <li>
         <Link to="/ourMenuPage" className="uppercase">
           our menu
@@ -43,13 +51,13 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link  to="/dashboard/myCart"  className="hover:text-warning">
+        <Link to="/dashboard/myCart" className="hover:text-warning">
           <div className="btn btn-ghost btn-circle">
             <FaShoppingCart></FaShoppingCart>
             <span className="badge badge-sm indicator-item">
               {carts.length || 0}
             </span>
-          </div> 
+          </div>
         </Link>
       </li>
       <li>
