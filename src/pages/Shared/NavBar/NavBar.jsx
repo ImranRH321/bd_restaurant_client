@@ -6,11 +6,10 @@ import { FaShoppingCart } from 'react-icons/fa';
 import useAdmin from "../../../hooks/useAdmin";
 
 const NavBar = () => {
-  const { currentUser, } = useContext(AuthContext)
-  const handleLogOut = () => {
+  const { currentUser, logOutUser } = useContext(AuthContext)
+  const hanldeLogOutButton = () => {
     logOutUser()
-      .then(() => { console.log('user log out done') })
-      .catch(err => console.log('logout err', err))
+      .then(() => { console.log('go out user') })
   }
   // carts 
   const { carts } = useCart();
@@ -39,6 +38,7 @@ const NavBar = () => {
         <Link to="/dashboard/userHome" className="uppercase">
           dashboard
         </Link>
+
       </li>}
       <li>
         <Link to="/ourMenuPage" className="uppercase">
@@ -60,22 +60,87 @@ const NavBar = () => {
           </div>
         </Link>
       </li>
+      {/* condiiton */}
       <li>
-        {currentUser ? <>  <button onClick={handleLogOut} className="btn uppercase btn-sm text-white bg-red-500 hover:bg-red-500">
-          sing out
-        </button></> : <>  <Link to="/login">
-          <button className="btn btn-sm btn-priamry">
-            Login
-          </button>
-        </Link></>}
+        {currentUser ? <div className="profile_container ">
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full ">
+                <img
+                  className="mask mask-decagon w-10 rounded-full"
+                  src={currentUser?.photoURL}
+                />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <div className="flex flex-col mb-3 border  justify-center items-center">
+                {/* alex  */}
+                <p className="font-semibold my-3 fw-semibold text-black">
+                  {currentUser?.email}
+                </p>
+                {/*  */}
+                <div className="oneimg">
+                  <img
+                    className="w-24 h-24  mask mask-circle"
+                    src={currentUser?.photoURL}
+                  />
+                </div>
+                <p className="font-semibold capitalize my-3 fw-semibold text-black">
+                  Hi, {currentUser?.displayName} !
+                </p>
+
+                <div className="flex"></div>
+                <Link to="/register">
+                  <button className="btn btn-sm btn-outline btn-accent">Add Account</button>
+                </Link>
+
+                <button
+                  onClick={hanldeLogOutButton}
+                  className="btn bg-red-600 hover:bg-red-400 btn-sm mt-4"
+                >
+                  LogOut
+                </button>
+              </div>
+            </ul>
+          </div>
+        </div>
+          : <> <Link to="/login">
+            <button className="btn  btn-success  btn-sm">
+              Login
+            </button>
+            
+          </Link></>}
+      </li>
 
 
+      {/* -----------  */}
+
+      {/* -----------  */}
+
+      <li>
+        <Link to="/" className="uppercase">
+          <li>
+
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn m-1">Click</label>
+              <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a>Item 1</a></li>
+                <li><a>Item 2</a></li>
+              </ul>
+            </div>
+
+          </li>
+        </Link>
       </li>
       <li>
         <Link to="/" className="uppercase">
-          img
+          dancon
         </Link>
       </li>
+
     </>
   );
   return (
@@ -121,9 +186,16 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{navLink}</ul>
 
       </div>
+      <div className="end">
 
+      </div>
     </div>
   );
 };
 
 export default NavBar;
+
+
+/* Not Open user 
+ei mase amare 35 kamaite hoibo noyto bedes go arabiya 
+*/

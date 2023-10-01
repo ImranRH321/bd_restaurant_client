@@ -41,7 +41,7 @@ const SocialLogin = ({ setError }) => {
     }
     return (
         <div className='flex justify-center my-3'>
-            <button onClick={hanldeGoogeUser} className='btn btn-outline btn-md hover:text-warning btn-circle'>
+            <button onClick={hanldeGoogeUser} className='btn btn-primary hover:btn-outline btn-md btn-circle'>
                 <FaGoogle />
             </button>
         </div>

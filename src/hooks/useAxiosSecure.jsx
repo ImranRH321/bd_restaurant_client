@@ -41,7 +41,7 @@ const useAxiosSecure = () => {
                 // navigate('/')
                 navigate('/login')
                 logOutUser();
-                console.log('') 
+                console.log('')
             }
 
             return Promise.reject(error);
@@ -50,7 +50,7 @@ const useAxiosSecure = () => {
 
     }, [])
 
-    return { instanceSecoreApis };
+    return { instanceSecoreApis, navigate };
 };
 
 export default useAxiosSecure;

@@ -24,13 +24,14 @@ const Dashboard = () => {
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 {/* Page content here */}
-                <Outlet></Outlet>
+              
                 <label
                     htmlFor="my-drawer-2"
                     className="btn btn-primary drawer-button lg:hidden"
                 >
                     Open drawer
                 </label>
+                <Outlet></Outlet>
             </div>
             <div className="drawer-side bg-[#D1A054]">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -55,11 +56,6 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to="/dashboard/manageItem">
                                     <FaWallet></FaWallet> Manges Items
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/manageItem">
-                                    <FaBook></FaBook> Manage bookings
                                 </NavLink>
                             </li>
                             <li>
@@ -118,14 +114,12 @@ const Dashboard = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/ourMenu">Our Menu</NavLink>
+                        <NavLink to="/ourMenuPage">Our Menu</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/orderFood/salad">Our Order</NavLink>
+                        <NavLink to="/ourShop/categoryName/pizza">Our Order</NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/contact">Contact</NavLink>
-                    </li>
+                   
                     <li>
                         <button onClick={hanldeLogOutButton} className='btn btn-error'>Contact</button>
                     </li>

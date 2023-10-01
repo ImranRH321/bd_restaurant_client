@@ -7,7 +7,7 @@ const Main = () => {
     const location = useLocation();
     const HeadToFooter = location.pathname.includes('/login') || location.pathname.includes('/register')
     return (
-        <div>
+        <div className='m-0 p-0'>
             {HeadToFooter || <NavBar></NavBar>}
             <Outlet></Outlet>
             <h1>main page</h1>

@@ -33,44 +33,35 @@ const Login = () => {
     };
 
     return (
-        <div className="bg-primary">
+        <div className="font-mono mt-10">
             {/* TODO: Helmat not install   */}
 
             <br />
             {/* <section className="grid md:grid-cols-2 mb-5"> */}
             <section className="flex justify-center items-center">
-                {/* <div className="imgParent">
-                    <img
-                        className="w-full"
-                        src={
-                            "https://media.istockphoto.com/id/1281150061/vector/register-account-submit-access-login-password-username-internet-online-website-concept.jpg?s=612x612&w=0&k=20&c=9HWSuA9IaU4o-CK6fALBS5eaO1ubnsM08EOYwgbwGBo="
-                        }
-                        alt=""
-                    />
-                </div> */}
                 <div className="formContainer mx-12 border-t-5 ">
-                    <h1 className="text-5xl font-semibold text-white py-7 text-center ">Login page </h1>
-                    <form onSubmit={handleLoginFormUser} className="card-body ">
+                    <h1 className="text-5xl font-semibold text-priamry py-3 text-center uppercase font-mono">Login page </h1>
+                    <form onSubmit={handleLoginFormUser} className="text-black">
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-white">Email</span>
+                                <span className="label-text">Email</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="email"
-                                className="input input-bordered w- "
+                                className="input input-bordered  "
                                 required
                                 name="email"
                             />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-white">Password</span>
+                                <span className="label-text">Password</span>
                             </label>
                             <input
                                 type="password"
                                 placeholder="password"
-                                className="input input-bordered w- "
+                                className="input input-bordered  "
                                 required
                                 name="password"
                             />
@@ -78,23 +69,27 @@ const Login = () => {
 
                         {/* TODO: Firebase error */}
                         <p className="text-red-500">{error?.message}</p>
-                        <div className="form-control mt-2">
+                        <div className="form-control mt-4">
                             {/* TODO: disabled captcha  button after last change disabled */}
                             <input
                                 type="submit"
                                 value="Login"
-                                className="btn btn-warning w-full"
+                                className="btn btn-sm btn-success w-full"
                             />
                         </div>
                     </form>
-                    <p className="mb-6 text-white">
+                    <p className="mt-3 ">
                         New here?{" "}
-                        <Link to="/register" className="link ms-2 text-warning">
+                        <Link to="/register" className="link ms-2 text-info">
                             Create a New Account
                         </Link>
                     </p>
                     {/* SocialLogin */}
-                    <SocialLogin setError={setError}></SocialLogin>
+                    <div className="flex text-center items-center gap-x-2 justify-center">
+                        <SocialLogin setError={setError}></SocialLogin>
+                        <SocialLogin setError={setError}></SocialLogin>
+                        <SocialLogin setError={setError}></SocialLogin>
+                    </div>
                 </div>
             </section>
         </div>
