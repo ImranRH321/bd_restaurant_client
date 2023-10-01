@@ -5,6 +5,7 @@ import { AuthContext } from "../../../context/TreeContextProvider";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import axios from "axios";
+import sideImage from '../../../assets/others/authentication.gif'
 
 const Register = () => {
     const { registerUser, updateProfileUser } = useContext(AuthContext);
@@ -14,7 +15,6 @@ const Register = () => {
     const {
         register,
         handleSubmit,
-        watch,
         reset,
         formState: { errors },
     } = useForm();
@@ -60,15 +60,11 @@ const Register = () => {
     return (
         <>
             {/* TODO: Helment not install  */}
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen bg-base-200 font-mono">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold"> Register Up to SingUp now!</h1>
-                        <p className="py-6">
-                            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-                            excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-                            et a id nisi.
-                        </p>
+                        <h1 className="text-5xl font-bold capitalize text-center mb-3 text-cyan-500">SingUp now!</h1>
+                        <img src={sideImage} alt="no-found" />
                     </div>
                     <div className="card flex-shrink-0 w-full me-16 max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-3">
@@ -162,12 +158,12 @@ const Register = () => {
                             {/* firebase error  */}
                             <p className="text-red-600 mb-2">{error?.message}</p>
                             <div className="form-control mt-2">
-                                <input type="submit" value="SingUp" className="btn btn-info" />
+                                <input type="submit" value="SingUp" className="capitalize btn btn-info" />
                             </div>
                         </form>
                         <p className=" font-semibold mx-auto">
                             Already registered?{" "}
-                            <Link to="/login" className="link ms-2 ">
+                            <Link to="/login" className="link ms-2 text-primary">
                                 please  login
                             </Link>
                         </p>
