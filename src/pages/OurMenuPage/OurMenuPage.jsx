@@ -4,6 +4,10 @@ import ItemList from '../Shared/ItemLIst/ItemList';
 import OurItemsMenu from '../OurItemsMenu/OurItemsMenu';
 import PageRouteTitle from '../Shared/PageRouteTitle/PageRouteTitle';
 
+import PageCover from '../Shared/PageCover/PageCover';
+import commonImg from '../../assets/home/chef-special.jpg'
+import banner from '../../assets/home/banner.jpg';
+
 const OurMenuPage = () => {
     const { foodMenus, loading } = useFoodItemsMenu()
 
@@ -17,11 +21,15 @@ const OurMenuPage = () => {
     return (
         <div className='pt-16'>
             <PageRouteTitle pageTitle={'OurMenuPage'}></PageRouteTitle>
-            <h2>backgroun image our menu page </h2>
-            <div className="text-3xl">Our menu</div>
+            <PageCover coverImg={banner} pageCoverTitle={'Our Menu'} color="text-warning"></PageCover>
+            <br /> <br />
             <OurItemsMenu foodItems={pizza} foodTitle="pizza"></OurItemsMenu>
+            <PageCover coverImg={banner} pageCoverTitle={'pizza'} color="text-warning"></PageCover>
             <OurItemsMenu foodItems={salad} foodTitle="salad"></OurItemsMenu>
+            <PageCover coverImg={banner} pageCoverTitle={'iccCream'} color="text-warning"></PageCover>
+
             <OurItemsMenu foodItems={iccCream} foodTitle="iccCream"></OurItemsMenu>
+            <PageCover coverImg={banner} pageCoverTitle={'chicken'} color="text-warning"></PageCover>
             <OurItemsMenu foodItems={chicken} foodTitle="chicken"></OurItemsMenu>
 
         </div>
