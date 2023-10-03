@@ -7,7 +7,7 @@ const useFoodItemsMenu = () => {
        const [loading, setLoading] = useState(true)
    
        useEffect(() => { 
-           axios.get('http://localhost:5000/foodMenu')
+           axios.get('https://bd-restaurant-server.vercel.app/foodMenu')
                .then(function (response) {
                    // handle success
                    setFoodMenus(response.data);
@@ -16,16 +16,16 @@ const useFoodItemsMenu = () => {
    
        }, []) */
 
-    const {refetch, data: foodMenus = [], isLoading: loading } = useQuery({
+    const { refetch, data: foodMenus = [], isLoading: loading } = useQuery({
         queryKey: ['foodMenu'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/foodMenu');
+            const res = await fetch('https://bd-restaurant-server.vercel.app/foodMenu');
             return res.json();
         }
     })
 
 
-    return { foodMenus, loading ,refetch }
+    return { foodMenus, loading, refetch }
 };
 
 export default useFoodItemsMenu;

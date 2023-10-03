@@ -49,7 +49,9 @@ const TreeContextProvider = ({ children }) => {
             setCurrentUser(user)
             if (user && user.email) {
                 const email = { emailUser: user.email };
-                axios.post('http://localhost:5000/user/tokenSet', email)
+                axios.post('https://bd-restaurant-server.vercel.app/user/tokenSet', email
+                )
+                    // axios.post('https://bd-restaurant-server.vercel.app/user/tokenSet', email)
                     .then(res => {
                         localStorage.setItem('userAccessToken', res.data.token)
                         setAuthLoading(false)

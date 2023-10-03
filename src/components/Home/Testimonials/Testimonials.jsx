@@ -14,7 +14,7 @@ const Testimonials = () => {
     const [rating, setRating] = useState(0) // Initial value
     const [reviewsData, setReviewsData] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/reviews")
+        fetch("https://bd-restaurant-server.vercel.app/reviews")
             .then((res) => res.json())
             .then((data) => {
                 setReviewsData(data);
@@ -30,11 +30,11 @@ const Testimonials = () => {
                         type: "fraction",
                     }}
                     navigation={true}
-                    modules={[Pagination, Navigation]} 
+                    modules={[Pagination, Navigation]}
                     className="mySwiper"
                 >
                     {reviewsData.map((review, index) => (
-                        <SwiperSlide>
+                        <SwiperSlide key={review._id}>
                             <div className="flex flex-col  items-center justify-center m-16">
                                 <h1><Rating style={{ maxWidth: 250 }} value={review?.rating} onChange={setRating} /></h1>
                                 <p className="mt-2">{review.details}</p>

@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/TreeContextProvider";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import PageRouteTitle from "../../Shared/PageRouteTitle/PageRouteTitle";
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext);
@@ -35,7 +36,7 @@ const Login = () => {
     return (
         <div className="font-mono mt-10">
             {/* TODO: Helmat not install   */}
-
+          <PageRouteTitle pageTitle={'Login'}></PageRouteTitle>
             <br />
             {/* <section className="grid md:grid-cols-2 mb-5"> */}
             <section className="flex justify-center items-center">

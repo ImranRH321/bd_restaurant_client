@@ -37,7 +37,7 @@ const CheckoutForm = () => {
 
     useEffect(() => {
         if (price > 0) {
-            instanceSecoreApis.post('http://localhost:5000/create-payment-intent', { totalPrice })
+            instanceSecoreApis.post('https://bd-restaurant-server.vercel.app/create-payment-intent', { totalPrice })
                 .then(res => {
                     // console.log(res.data.clientSecret, 'payment intent price  cient secreet');
                     setClientSecret(res.data.clientSecret)

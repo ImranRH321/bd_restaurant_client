@@ -4,6 +4,7 @@ import { FaRegTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import PageRouteTitle from '../../../Shared/PageRouteTitle/PageRouteTitle';
 
 const MyCarts = () => {
     const { carts, refetch } = useCart();
@@ -15,7 +16,7 @@ const MyCarts = () => {
     // Deleted food on the cart 
     const handleDeletedFoodItem = (item) => {
         console.log(item, 'dele');
-        axios.delete(`http://localhost:5000/carts/${item._id}`)
+        axios.delete(`https://bd-restaurant-server.vercel.app/carts/${item._id}`)
             .then(res => {
                 console.log('cart deleted item axios res me: ', res);
                 if (res.data.deletedCount > 0) {
@@ -33,7 +34,7 @@ const MyCarts = () => {
 
     return (
         <div className="w-full">
-            {/* TODO: Helmet not install but use at last*/}
+            <PageRouteTitle pageTitle={'My carts'}></PageRouteTitle>
 
             <div className="flex gap-10 uppercase items-center">
                 <h1>Total Items: {carts?.length}</h1>

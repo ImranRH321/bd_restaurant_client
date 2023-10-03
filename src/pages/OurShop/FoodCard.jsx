@@ -16,7 +16,7 @@ const FoodCard = ({ itemsFood }) => {
     const { refetch } = useCart()
 
     // console.log("currentUser:", currentUser);
-    
+
 
 
     // ADD data 
@@ -27,7 +27,7 @@ const FoodCard = ({ itemsFood }) => {
 
             const userOrderInfo = { foodname: name, category, price, nameUser: currentUser?.displayName || 'current user name null', emailUser: currentUser?.email || "current email null", foodItemId: item._id, image: image }
             // alert("user ase")
-            axios.post('http://localhost:5000/cart/addItem', userOrderInfo)
+            axios.post('https://bd-restaurant-server.vercel.app/cart/addItem', userOrderInfo)
                 .then(res => {
                     console.log('res data ', res.data)
                     if (res.data.insertedId) {

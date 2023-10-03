@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 const instanceSecoreApis = axios.create({
-    baseURL: 'http://localhost:5000/'
+    // https://bd-restaurant-server.vercel.app 
+    baseURL: 'https://bd-restaurant-server.vercel.app/'
 })
 const useAxiosSecure = () => {
 

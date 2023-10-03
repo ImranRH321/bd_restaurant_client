@@ -8,6 +8,7 @@ import OrderTab from './OrderTab';
 import { useParams } from 'react-router-dom';
 import PageCover from '../Shared/PageCover/PageCover';
 import banner from '../../assets/home/banner.jpg';
+import PageRouteTitle from '../Shared/PageRouteTitle/PageRouteTitle';
 
 const OurShop = () => {
     const { foodMenus, loading } = useFoodItemsMenu()
@@ -26,6 +27,7 @@ const OurShop = () => {
 
     return (
         <div className='pt-16'>
+            <PageRouteTitle pageTitle={'Our Shop'}></PageRouteTitle>
             {/* <h4>category name: {foodName} </h4>
             <h4>tabIndex: {tabIndex} </h4>
             <h4>indexOfItem: {indexOfItem} </h4> */}

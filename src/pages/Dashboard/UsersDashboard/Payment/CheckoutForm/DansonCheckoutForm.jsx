@@ -26,7 +26,7 @@ const DansonCheckoutForm = () => {
     /*  create-payment-intent apis first  */
     useEffect(() => {
         if (price > 0) {
-            instanceSecoreApis.post('http://localhost:5000/create-payment-intent', { price })
+            instanceSecoreApis.post('https://bd-restaurant-server.vercel.app/create-payment-intent', { price })
                 .then(res => {
                     console.log('res ', res);
                     setClientSecret(res.data.clientSecret)
@@ -105,7 +105,7 @@ const DansonCheckoutForm = () => {
             }
             // send data
             console.log(paymentUser);
-            instanceSecoreApis.post('http://localhost:5000/payments', paymentUser)
+            instanceSecoreApis.post('https://bd-restaurant-server.vercel.app/payments', paymentUser)
                 .then(res => {
                     console.log('save data res', res.data)
                     if (res.data.insertedResult.insertedId) {

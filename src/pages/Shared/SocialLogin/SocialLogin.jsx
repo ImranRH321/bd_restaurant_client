@@ -22,7 +22,7 @@ const SocialLogin = ({ setError }) => {
                 // console.log(gooUser) 
                 const userLogInfo = { nameUser: gooUser.displayName, emailuser: gooUser.email, photo: gooUser.photoURL }
 
-                axios.post('http://localhost:5000/users', userLogInfo)
+                axios.post('https://bd-restaurant-server.vercel.app/users', userLogInfo)
                     .then(res => {
                         if (res.data) {
                             Swal.fire({

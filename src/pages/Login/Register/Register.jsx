@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import axios from "axios";
 import sideImage from '../../../assets/others/authentication.gif'
+import PageRouteTitle from "../../Shared/PageRouteTitle/PageRouteTitle";
 
 const Register = () => {
     const { registerUser, updateProfileUser } = useContext(AuthContext);
@@ -34,7 +35,7 @@ const Register = () => {
                             // lot of code.......
                             const userLogInfo = { nameUser: data.name, emailUser: data.email, photo: data.photo }
                             console.log(userLogInfo, 'log info data');
-                            axios.post('http://localhost:5000/users', userLogInfo)
+                            axios.post('https://bd-restaurant-server.vercel.app/users', userLogInfo)
                                 .then(res => {
                                     console.log(res, 'res axios');
                                     if (res.data.insertedId) {
@@ -59,7 +60,7 @@ const Register = () => {
 
     return (
         <>
-            {/* TODO: Helment not install  */}
+            <PageRouteTitle pageTitle={'Register'}></PageRouteTitle>
             <div className="hero min-h-screen bg-base-200 font-mono">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left">

@@ -3,6 +3,8 @@ import useAuth from '../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, ResponsiveContainer, Legend } from 'recharts';
+import PageRouteTitle from '../../../Shared/PageRouteTitle/PageRouteTitle';
+import SectionHeadingTitle from '../../../Shared/SectionHeadingTitle/SectionHeadingTitle';
 
 
 
@@ -50,7 +52,11 @@ const AdminHome = () => {
 
     return (
         <div className='w-full mx-4'>
-            <h1 className='text-3xl'>Welcome back,{chartData.length};; {currentUser?.displayName}</h1>
+                <PageRouteTitle pageTitle={'Admin Home'}></PageRouteTitle>
+                
+            <SectionHeadingTitle sectionTitle={'Hurry Up!'} sectionHeading={'Admin home'}></SectionHeadingTitle>
+ 
+            <h1 className='text-3xl'>Welcome back hey, {currentUser?.displayName}</h1>
             <section>
                 <div className="stats shadow">
 

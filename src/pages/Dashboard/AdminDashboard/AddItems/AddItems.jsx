@@ -3,6 +3,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import PageRouteTitle from '../../../Shared/PageRouteTitle/PageRouteTitle';
+import SectionHeadingTitle from '../../../Shared/SectionHeadingTitle/SectionHeadingTitle';
 
 const AddItems = () => {
 
@@ -29,7 +31,6 @@ const AddItems = () => {
             .then(res => res.json())
             .then(imageData => {
                 const imageUrl = imageData.data.display_url;
-                console.log('some =========', imageData.data.display_url === imageData.data.url);
                 // properti
                 const { name, category, price, recipe } = data;
                 // 
@@ -42,7 +43,7 @@ const AddItems = () => {
                 };
                 console.log('newAddItem======', newAddItem);
                 // send the server save mongodb menu collection 
-                instanceSecoreApis.post('http://localhost:5000/menu/addItem', newAddItem)
+                instanceSecoreApis.post('https://bd-restaurant-server.vercel.app/menu/addItem', newAddItem)
                     .then(response => {
                         console.log('axios responseo==', response);
                         if (response.data.insertedId) {
@@ -64,7 +65,10 @@ const AddItems = () => {
     }
     return (
         <div className="w-full px-12">
-            {/* TODO: route page tilte */}
+            <PageRouteTitle pageTitle={'AddItem'}></PageRouteTitle>
+
+            <SectionHeadingTitle sectionTitle={''} sectionHeading={'Add Item now'}></SectionHeadingTitle>
+
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="">
                     <label htmlFor="name">Recipe Name:</label> <br />

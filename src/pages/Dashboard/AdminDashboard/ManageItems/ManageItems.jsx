@@ -5,6 +5,8 @@ import axios from 'axios';
 import useFoodItemsMenu from '../../../../hooks/useFoodItemsMenu';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import SectionHeadingTitle from '../../../Shared/SectionHeadingTitle/SectionHeadingTitle';
+import PageRouteTitle from '../../../Shared/PageRouteTitle/PageRouteTitle';
 
 const ManageItems = () => {
 
@@ -52,10 +54,8 @@ const ManageItems = () => {
 
     return (
         <div className="w-full">
-            {/* <SectionTitle
-                smallHeading={"---Hurry Up!---"}
-                largeHeading={"MANAGE ALL ITEMS"}
-            ></SectionTitle> */}
+            <PageRouteTitle pageTitle={'Manage items'}></PageRouteTitle>
+            <SectionHeadingTitle sectionTitle={'Hurry Up!'} sectionHeading={'MANAGE ALL ITEMS'}></SectionHeadingTitle>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

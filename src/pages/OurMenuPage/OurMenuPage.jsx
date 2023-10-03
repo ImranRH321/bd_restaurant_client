@@ -2,6 +2,7 @@ import React from 'react';
 import useFoodItemsMenu from '../../hooks/useFoodItemsMenu';
 import ItemList from '../Shared/ItemLIst/ItemList';
 import OurItemsMenu from '../OurItemsMenu/OurItemsMenu';
+import PageRouteTitle from '../Shared/PageRouteTitle/PageRouteTitle';
 
 const OurMenuPage = () => {
     const { foodMenus, loading } = useFoodItemsMenu()
@@ -15,6 +16,7 @@ const OurMenuPage = () => {
     // }
     return (
         <div className='pt-16'>
+            <PageRouteTitle pageTitle={'OurMenuPage'}></PageRouteTitle>
             <h2>backgroun image our menu page </h2>
             <div className="text-3xl">Our menu</div>
             <OurItemsMenu foodItems={pizza} foodTitle="pizza"></OurItemsMenu>

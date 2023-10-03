@@ -9,7 +9,7 @@ const useCart = () => {
     const { currentUser, authLoading } = useContext(AuthContext)
     const navigate = useNavigate();
     const getToken = localStorage.getItem('userAccessToken');
-    const {instanceSecoreApis} = useAxiosSecure();
+    const { instanceSecoreApis } = useAxiosSecure();
     // TODO: funciton not music underhod
     // console.log('how is it work instanceSecoreApis-->',instanceSecoreApis);
     // 
@@ -17,7 +17,7 @@ const useCart = () => {
       const { refetch, data: carts = [], error } = useQuery({
            queryKey: ['carts', currentUser?.email],
            queryFn: async () => {
-               const res = await axios.get(`http://localhost:5000/carts?email=${currentUser.email}`, {
+               const res = await axios.get(`https://bd-restaurant-server.vercel.app/carts?email=${currentUser.email}`, {
                    headers: { authorizatoin: `Bearer ${getToken}` }
                })
                console.log('cart get  res me: ',res);
@@ -45,7 +45,7 @@ const useCart = () => {
             queryKey: ['carts', currentUser?.email],
             enabled: !authLoading,
             queryFn: async () => {
-                const res = await axios.get(`http://localhost:5000/carts?email=${currentUser.email}`, {
+                const res = await axios.get(`https://bd-restaurant-server.vercel.app/carts?email=${currentUser.email}`, {
                     headers: { authorization: `Bearer ${localStorage.getItem('userAccessToken')}` }
                 })
                 console.log('cart get data  respone me: ', res);
