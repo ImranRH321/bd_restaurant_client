@@ -159,7 +159,7 @@ const NavBar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="mt-3 bg-white text-black z-[1] p-2 shadow menu menu-sm dropdown-content  rounded-box w-52"
+                className="mt-3 bg-[#D1A054] text-black z-[1] p-2 shadow menu menu-sm dropdown-content  rounded-box w-52"
               >
                 <div className="flex flex-col mb-3   justify-center items-center">
                   {/* alex  */}
@@ -189,12 +189,12 @@ const NavBar = () => {
                   </li>}
                   <div className="flex"></div>
                   <Link to="/register">
-                    <button className="btn btn-sm btn-outline btn-accent mt-5">Add Account</button>
+                    <button className="btn btn-sm  btn-accent mt-5">Add Account</button>
                   </Link>
 
                   <button
                     onClick={hanldeLogOutButton}
-                    className="btn bg-red-600 hover:bg-red-400 btn-sm mt-4"
+                    className="btn bg-red-400 hover:bg-red-500 btn-sm mt-4"
                   >
                     LogOut
                   </button>

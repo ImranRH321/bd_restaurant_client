@@ -20,25 +20,28 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="drawer lg:drawer-open">
+        <div className="drawer lg:drawer-open font-mono font-semibold text-black">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 {/* Page content here */}
-              
+
                 <label
                     htmlFor="my-drawer-2"
                     className="btn btn-primary drawer-button lg:hidden"
                 >
                     Open drawer
                 </label>
-                <Outlet></Outlet>
+                <Outlet></Outlet> 
             </div>
-            <div className="drawer-side bg-[#D1A054]">
+            <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu  p-4 w-80 h-full ">
+                <ul className="menu  p-4 w-80 h-full bg-[#D1A054]">
                     {/* Sidebar content here */}
-                    <h1 className="text-3xl text-black">isAdmin heda miya{`--raja -->${new String(isAdmin)}`}</h1>
-                    <h4>-------------------------</h4>
+                    {/* <h1 className=" text-black text-sm">isAdmin miya{`--raja -->${new String(isAdmin)}`}</h1> */}
+                   <div className="p-4">
+                   <h1 className=" text-black text-lg uppercase">Pannda Express</h1>
+                    <h1 className=" text-black text-lg uppercase">Restaurant</h1>
+                   </div>
                     {isAdmin ? (
                         <>
                             <li>
@@ -73,12 +76,12 @@ const Dashboard = () => {
                                     <FaHome></FaHome> user home
                                 </NavLink>
                             </li>
-                            <li>
+                            {/* <li>
                                 <NavLink to="/dashboard/reservations">
-                                    {" "}
+                                  
                                     <FaCalendar></FaCalendar> Reservations
                                 </NavLink>
-                            </li>
+                            </li> */}
                             <li>
                                 <NavLink to="/dashboard/payment">
                                     {" "}
@@ -86,8 +89,8 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink>
-                                    {" "}
+                                <NavLink to="/dashboard/payment/hisotry"> 
+                                    
                                     <FaWallet></FaWallet> payment history
                                 </NavLink>
                             </li>
@@ -119,9 +122,9 @@ const Dashboard = () => {
                     <li>
                         <NavLink to="/ourShop/categoryName/pizza">Our Order</NavLink>
                     </li>
-                   
+
                     <li>
-                        <button onClick={hanldeLogOutButton} className='btn btn-error'>Contact</button>
+                        <button onClick={hanldeLogOutButton}  className="btn bg-red-500 border-0 w-[120px] hover:bg-red-400 btn-sm mt-4">LogOut</button>
                     </li>
                 </ul>
             </div>

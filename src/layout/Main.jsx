@@ -12,6 +12,7 @@ const Main = () => {
             <Outlet></Outlet>
             <h1>main page</h1>
             {HeadToFooter || <Footer></Footer>}
+            
         </div>
     );
 };

@@ -16,6 +16,8 @@ import Payment from "../pages/Dashboard/UsersDashboard/Payment/Payment/Payment";
 import DansonCheckoutForm from "../pages/Dashboard/UsersDashboard/Payment/CheckoutForm/DansonCheckoutForm";
 import AdminHome from "../pages/Dashboard/AdminDashboard/AdminHome/AdminHome";
 import UserHome from "../pages/Dashboard/UsersDashboard/UserHome/UserHome";
+import NoFound from "../pages/Shared/NoFound/NoFound";
+import PaymentHistoryUser from "../pages/Dashboard/UsersDashboard/PaymentHistoryUser/PaymentHistoryUser";
 
 
 export const router = createBrowserRouter([
@@ -28,6 +30,8 @@ export const router = createBrowserRouter([
       { path: "ourShop/categoryName/:foodName", element: <OurShop></OurShop> }
       , { path: "login", element: <Login></Login> }
       , { path: "register", element: <Register></Register> }
+      , 
+      , { path: "*", element: <NoFound></NoFound> }
     ],
   },
   {
@@ -38,6 +42,7 @@ export const router = createBrowserRouter([
       { path: "userHome", element: <UserHome></UserHome> },
       { path: "myCart", element: <MyCarts></MyCarts> },
       { path: "payment", element: <Payment></Payment> },
+      { path: "payment/hisotry", element: <PaymentHistoryUser></PaymentHistoryUser> },
       // Admin
       { path: "adminHome", element: <AdminRoute> <AdminHome></AdminHome> </AdminRoute> },
       { path: "allUsers", element: <AdminRoute> <AllUsers></AllUsers> </AdminRoute> },

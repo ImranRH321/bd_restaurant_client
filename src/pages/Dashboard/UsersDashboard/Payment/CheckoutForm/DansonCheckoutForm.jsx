@@ -128,8 +128,7 @@ const DansonCheckoutForm = () => {
     */
     return (
         <div>
-            <h1 className='text-3xl'>payment now via : {currentUser?.displayName} </h1>
-            <p>{clientSecret} </p>
+            <h1 className='text-3xl mb-4'>payment now : {currentUser?.displayName} user</h1>
             <section>
                 <form onSubmit={handleSubmit}>
                     <CardElement

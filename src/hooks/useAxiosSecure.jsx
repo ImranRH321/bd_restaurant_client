@@ -14,8 +14,6 @@ const useAxiosSecure = () => {
     const navigate = useNavigate();
 
 
-    // console.log(logOutUser, ' -------> ki tumi amare ke deho to lot luser axisor route');
-
     useEffect(() => {
         // Add a request interceptor
         instanceSecoreApis.interceptors.request.use(function (config) {
