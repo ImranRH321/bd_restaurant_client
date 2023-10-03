@@ -3,16 +3,20 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SectionHeadingTitle from "../../../pages/Shared/SectionHeadingTitle/SectionHeadingTitle";
+import side1 from '../../../assets/home/slide1.jpg'
+import side2 from '../../../assets/home/slide2.jpg'
+import side3 from '../../../assets/home/slide3.jpg'
+import side4 from '../../../assets/home/slide4.jpg'
+import side5 from '../../../assets/home/slide5.jpg'
+
 
 const CategoryFoodName = () => {
   const basicFood = [
-    { foodName: "salad", img: "https://i.ibb.co/XsZmRQC/dabul6.jpg" },
-    { foodName: "pizza", img: "https://i.ibb.co/XsZmRQC/dabul6.jpg" },
-    { foodName: "Apple ", img: "https://i.ibb.co/XsZmRQC/dabul6.jpg" },
-    { foodName: "Cookies", img: "https://i.ibb.co/XsZmRQC/dabul6.jpg" },
-    { foodName: "Burger ", img: "https://i.ibb.co/XsZmRQC/dabul6.jpg" },
-    { foodName: "Potato", img: "https://i.ibb.co/XsZmRQC/dabul6.jpg" },
-    { foodName: "Chicken", img: "https://i.ibb.co/XsZmRQC/dabul6.jpg" },
+    { foodName: "salad", img: side5 },
+    { foodName: "pizza", img: side4 },
+    { foodName: "Chicken", img: side3 },
+    { foodName: "Burger ", img: side2 },
+    { foodName: "Potato", img: side1 },
   ];
 
   var settings = {

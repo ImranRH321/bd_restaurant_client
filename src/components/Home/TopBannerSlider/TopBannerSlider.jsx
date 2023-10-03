@@ -1,21 +1,34 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import img1 from '../../../assets/home/01.jpg'
+import img2 from '../../../assets/home/02.jpg'
+import img3 from '../../../assets/home/03.png' 
+import img4 from '../../../assets/home/04.jpg'
+import img5 from '../../../assets/home/05.png'
+import img6 from '../../../assets/home/06.png'
+
 
 const TopBannerSlider = () => {
   return (
     <Carousel>
       <div>
-        <img src="https://c4.wallpaperflare.com/wallpaper/596/763/771/artwork-painting-nighthawks-edward-hopper-wallpaper-preview.jpg" />
-        <p className="legend">Legend 1</p>
+        <img src={img6} />
       </div>
       <div>
-        <img src="https://c4.wallpaperflare.com/wallpaper/837/898/423/food-fruit-healthy-acorn-wallpaper-preview.jpg" />
-        <p className="legend">Legend 2</p>
+        <img src={img5} />
       </div>
       <div>
-        <img src="https://c0.wallpaperflare.com/preview/452/100/984/restaurant-bar-coffee-shop.jpg" />
-        <p className="legend">Legend 3</p>
+        <img src={img4} />
+      </div>
+      <div>
+        <img src={img3} />
+      </div>
+      <div>
+        <img src={img2} />
+      </div>
+      <div>
+        <img src={img1} />
       </div>
     </Carousel>
   );

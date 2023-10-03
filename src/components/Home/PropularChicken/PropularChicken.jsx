@@ -1,6 +1,7 @@
 import React from 'react';
 import useFoodItemsMenu from '../../../hooks/useFoodItemsMenu';
 import { Link } from 'react-router-dom';
+import SectionHeadingTitle from '../../../pages/Shared/SectionHeadingTitle/SectionHeadingTitle';
 
 const PropularChicken = () => {
     const { foodMenus, loading } = useFoodItemsMenu()
@@ -11,9 +12,9 @@ const PropularChicken = () => {
         return <h1>loading Propular chicken food list data............</h1>
     }
     return (
-        <div>
-            <h1 className="text-3xl my-6 text-center font-semibold">Propular Chicken</h1>
+        <div className='my-10'>
             {/* TODO: PROPULAR SECTION HEADING || HELMENT TITLE */}
+            <SectionHeadingTitle sectionTitle={"chiken masala"} sectionHeading={'Propular Chicken'}></SectionHeadingTitle>
             <div className='grid md:grid-cols-2 gap-x-10'>
 
                 {/* under map  */}
