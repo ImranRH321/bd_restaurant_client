@@ -10,8 +10,7 @@ const useCart = () => {
     const navigate = useNavigate();
     const getToken = localStorage.getItem('userAccessToken');
     const { instanceSecoreApis } = useAxiosSecure();
-    // TODO: funciton not music underhod
-    // console.log('how is it work instanceSecoreApis-->',instanceSecoreApis);
+    
     // 
     /*  
       const { refetch, data: carts = [], error } = useQuery({
@@ -32,7 +31,6 @@ const useCart = () => {
         queryKey: ['carts', currentUser?.email],
         queryFn: async () => {
             const res = await instanceSecoreApis(`/carts?email=${currentUser.email}`)
-            console.log('cart get  res me: ', res);
             return res.data;
         },
     })

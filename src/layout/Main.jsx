@@ -11,7 +11,6 @@ const Main = () => {
             {HeadToFooter || <NavBar></NavBar>}
             <Outlet></Outlet>
             {HeadToFooter || <Footer></Footer>}
-
         </div>
     );
 };

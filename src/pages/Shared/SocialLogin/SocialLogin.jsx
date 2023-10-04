@@ -11,15 +11,12 @@ const SocialLogin = ({ setError }) => {
     let navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
-    console.log('location.state?.from?.pathname---->', location.state?.from?.pathname);
-    console.log('from via tumi kota take aico -->', from);
 
 
     const hanldeGoogeUser = () => {
         googleUser()
             .then(result => {
                 const gooUser = result.user;
-                // console.log(gooUser) 
                 const userLogInfo = { nameUser: gooUser.displayName, emailuser: gooUser.email, photo: gooUser.photoURL }
 
                 axios.post('https://bd-restaurant-server.vercel.app/users', userLogInfo)

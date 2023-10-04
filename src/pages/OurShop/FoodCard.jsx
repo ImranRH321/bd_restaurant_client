@@ -58,8 +58,7 @@ const FoodCard = ({ itemsFood }) => {
             // navigate('/login', { state: { from: 'location' }, replace: true });
 
             Swal.fire({
-                title: 'Are you not user please login ?',
-                text: "taray taray otiye dilam ",
+                title: 'please login ?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

@@ -13,6 +13,8 @@ const Register = () => {
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
+    const imagesStorekey = '428322d13b73eac9cb47c3c4911691c0';
+
     const {
         register,
         handleSubmit,
@@ -25,6 +27,19 @@ const Register = () => {
 
     const onSubmit = (data) => {
         console.log(data, 'for data');
+
+        //  image file
+       /*  
+       const formData = new FormData();
+        formData.append("image", data.image[0]);
+        const url = `https://api.imgbb.com/1/upload?key=${imagesStorekey}`;
+        axios.post(url,formData)
+        .then(res => {
+
+        }) */
+
+
+        // image host img
         {
             registerUser(data.email, data.password)
                 .then((userCredential) => {
@@ -96,11 +111,22 @@ const Register = () => {
                                     className="input input-bordered"
                                     {...register("photo", { required: true })}
                                 />
+                                {/* <input
+                                    type="file"
+                                    placeholder="Your photo"
+                                    className="input input-bordered"
+                                    {...register("image", { required: true })}
+
+                                /> */}
                                 <p className="text-red-600">
                                     {" "}
                                     {errors.photoUrl && <span>PhotoUrl is required</span>}
                                 </p>
+
+
                             </div>
+
+
                             {/* email  */}
                             <div className="form-control">
                                 <label className="label">
