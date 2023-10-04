@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { AuthContext } from '../../context/TreeContextProvider';
 import useCart from '../../hooks/useCart';
@@ -14,8 +14,8 @@ const FoodCard = ({ itemsFood }) => {
     /* not  codion apply */
     const navigate = useNavigate();
     const { refetch } = useCart()
-
-    // console.log("currentUser:", currentUser);
+    const location = useLocation();
+    
 
 
 
@@ -54,8 +54,6 @@ const FoodCard = ({ itemsFood }) => {
 
         } else {
             // console.log('current user nai via');
-            // // is line not working why ... 
-            // navigate('/login', { state: { from: 'location' }, replace: true });
 
             Swal.fire({
                 title: 'please login ?',
@@ -66,7 +64,8 @@ const FoodCard = ({ itemsFood }) => {
                 confirmButtonText: 'login'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navigate('/login', { state: { from: true } })
+                    // navigate('/login', { state: { from: true } }) 
+                    navigate('/login', { state: { from: 'location' }, replace: true });
                 }
             })
         }

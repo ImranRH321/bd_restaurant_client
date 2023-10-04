@@ -38,7 +38,7 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu  p-4 w-80 h-full bg-[#D1A054]">
                     {/* Sidebar content here */}
-                    <h1 className=" text-black text-sm">isAdmin miya{`--raja -->${new String(isAdmin)}`}</h1>
+                    {/* <h1 className=" text-black text-sm">isAdmin miya{`--raja -->${new String(isAdmin)}`}</h1> */}
                    <div className="p-4">
                    <h1 className=" text-black text-lg uppercase">Pannda Express</h1>
                     <h1 className=" text-black text-lg uppercase">Restaurant</h1>
