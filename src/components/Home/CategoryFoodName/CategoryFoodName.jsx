@@ -57,11 +57,11 @@ const CategoryFoodName = () => {
   return (
     <section>
       <SectionHeadingTitle
-        sectionTitle={"bass bohot valobasa"}
+        sectionTitle={""}
         sectionHeading={"ORDER ONLINE"}
       ></SectionHeadingTitle>
       <div>
-        <h2> Responsive </h2>
+        {/* <h2> Responsive </h2>  */}
         <Slider {...settings}>
           {basicFood.map((food) => (
             <div className="px-2">
