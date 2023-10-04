@@ -21,7 +21,7 @@ const Dashboard = () => {
 
     return (
         <div className="drawer lg:drawer-open font-mono font-semibold text-black">
-            
+
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 {/* Page content here */}
@@ -32,17 +32,17 @@ const Dashboard = () => {
                 >
                     Open drawer
                 </label>
-                <Outlet></Outlet> 
+                <Outlet></Outlet>
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu  p-4 w-80 h-full bg-[#D1A054]">
                     {/* Sidebar content here */}
                     {/* <h1 className=" text-black text-sm">isAdmin miya{`--raja -->${new String(isAdmin)}`}</h1> */}
-                   <div className="p-4">
-                   <h1 className=" text-black text-lg uppercase">Pannda Express</h1>
-                    <h1 className=" text-black text-lg uppercase">Restaurant</h1>
-                   </div>
+                    <div className="p-4">
+                        <h1 className=" text-black text-lg uppercase">Pannda Express</h1>
+                        <h1 className=" text-black text-lg uppercase">Restaurant</h1>
+                    </div>
                     {isAdmin ? (
                         <>
                             <li>
@@ -84,18 +84,6 @@ const Dashboard = () => {
                                 </NavLink>
                             </li> */}
                             <li>
-                                <NavLink to="/dashboard/payment">
-                                    {" "}
-                                    <FaCalendar></FaCalendar> Payment
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/payment/hisotry"> 
-                                    
-                                    <FaWallet></FaWallet> payment history
-                                </NavLink>
-                            </li>
-                            <li>
                                 <NavLink to="/dashboard/myCart">
                                     {" "}
                                     <FaShoppingCart></FaShoppingCart>
@@ -107,6 +95,19 @@ const Dashboard = () => {
                                     </p>
                                 </NavLink>
                             </li>
+                            <li>
+                                <NavLink to="/dashboard/payment">
+                                    {" "}
+                                    <FaCalendar></FaCalendar> Payment
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/payment/hisotry">
+
+                                    <FaWallet></FaWallet> payment history
+                                </NavLink>
+                            </li>
+
                         </>
                     )}
 
@@ -125,7 +126,7 @@ const Dashboard = () => {
                     </li>
 
                     <li>
-                        <button onClick={hanldeLogOutButton}  className="btn bg-red-500 border-0 w-[120px] hover:bg-red-400 btn-sm mt-4">LogOut</button>
+                        <button onClick={hanldeLogOutButton} className="btn bg-red-500 border-0 w-[120px] hover:bg-red-400 btn-sm mt-4">LogOut</button>
                     </li>
                 </ul>
             </div>
